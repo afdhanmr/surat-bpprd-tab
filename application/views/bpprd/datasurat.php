@@ -4,7 +4,9 @@
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-          <table class="table table-bordered table-striped">
+          <p>* Urutan surat paling atas adalah surat terbaru</p>
+
+          <table class="table shadow table-bordered table-striped">
             <tr>
               <th>NO</th>
               <th>NOMOR SURAT</th>
@@ -13,7 +15,7 @@
             </tr>
 
             <?php
-            $start = 0;
+            // $start = 0;
             foreach($surat as $srt) : ?>
 
             <tr>
@@ -30,6 +32,8 @@
             <?php endforeach; ?>
 
           </table>
+
+          <?= $this->pagination->create_links(); ?>
         
         <!-- <div class="table-responsive">
           <table class="table table-bordered table-striped">

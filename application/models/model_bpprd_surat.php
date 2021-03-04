@@ -9,8 +9,11 @@ class Model_bpprd_surat extends CI_Model{
 	// Menampilakan di Admin
 
 	public function get_tampil_data($limit, $start){
-		$query = $this->db->get('user_data_surat', $limit, $start);
-		return $query;
+		// $query = $this->db->get('user_data_surat', $limit, $start);
+		// return $query;
+		$this->db->select('*');
+      	$this->db->order_by('id_surat', 'DESC');
+      	return $this->db->get('user_data_surat ', $limit, $start);
 	}
 
 	public function count_tampil_data(){

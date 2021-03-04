@@ -9,6 +9,27 @@
 	img:hover {
 	  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 	}
+
+	.containerkomentar {
+	  border: 2px solid #dedede;
+	  background-color: #f1f1f1;
+	  border-radius: 5px;
+	  padding: 10px;
+	  margin: 10px 0;
+	}
+
+	/* Darker chat container */
+	.darker {
+	  border-color: #ccc;
+	  background-color: #ddd;
+	}
+
+	/* Clear floats */
+	.container::after {
+	  content: "";
+	  clear: both;
+	  display: table;
+	}
 </style>
 
 <div class="container-fluid">
@@ -66,13 +87,22 @@
 						<p>* Klik Gambar Untuk Zoom</p>
 					</th>
 	 			</tr>
-	 			<tr>
-	 				<td>Komentar</td>
-	 				<td>:</td>
-	 				<th><?php echo $tl->komentar_surat ?></th>
-	 			</tr>
-	 			<tr>
 	 		</table>
+
+	 		<div class="komentar mt-4">
+
+	 			<h4>Komentar :</h4>
+
+		 <div class="containerkomentar mt-4">
+
+		   		<?php foreach ($komentar as $kom): ?>
+
+		 			<h6><?php echo $kom->komentar ?></h6>
+
+		 		<?php endforeach ?>
+		 </div>
+
+	 </div>
 
 	 		<?php echo anchor('user/datasurat/','<div class="btn btn-sm btn-danger mt-3">KEMBALI</div>')?>
 	 	</div>

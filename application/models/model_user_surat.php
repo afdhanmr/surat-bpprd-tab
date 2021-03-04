@@ -2,15 +2,21 @@
 
 class Model_user_surat extends CI_Model{
 	public function tampil_data(){
-		$query = $this->db->get('user_data_surat'); 
+		// $query = $this->db->get('user_data_surat');
+		$query = $this->db->query("SELECT * FROM user_data_surat ORDER BY id_surat DESC"); 
 		return $query;
 	}
 
 	// Menampilakan di Admin
 
 	public function get_tampil_data($limit, $start){
-		$query = $this->db->get('user_data_surat', $limit, $start);
-		return $query;
+		// $query = $this->db->get('user_data_surat ', $limit, $start);
+		// $query = $this->db->query("SELECT * FROM user_data_surat ORDER BY id_surat DESC");
+		// return $query;
+		$this->db->select('*');
+          // $this->db->from('user_data_surat');
+        $this->db->order_by('id_surat', 'DESC');
+        return $this->db->get('user_data_surat ', $limit, $start);
 	}
 
 	public function count_tampil_data(){

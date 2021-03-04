@@ -7,7 +7,7 @@ class Bpprd extends CI_Controller {
 		{
 			parent::__construct();
 			is_logged_in();
-			if(!$this->session->userdata('role_id') == 3) {
+			if($this->session->userdata('role_id') != 3) {
 			  redirect('auth');
 			}
 		}
@@ -121,7 +121,55 @@ class Bpprd extends CI_Controller {
 		$data['title'] = 'Data Surat';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$data['surat'] 		= $this->model_bpprd_surat->tampil_data()->result();
+		// BARU
+		$this->load->model('model_user_surat','datasurat');
+
+		// Load Library Pagination
+		$this->load->library('pagination');				
+
+		// Config
+		$config['base_url']		= site_url('bpprd/datasurat');
+		$config['total_rows']	= $this->model_user_surat->count_tampil_data();
+		$config['per_page']		= 5;
+		$config['num_links'] 	= 2;
+
+		// Style
+		$config['full_tag_open'] 	= '<nav><ul class="pagination justify-content-center">';
+		$config['full_tag_close'] 	= '</ul></nav>';
+
+		$config['first_link'] 		= 'First';
+		$config['first_tag_open']	= '<li class="page-item">';
+		$config['first_tag_close']	= '</li>';
+
+		$config['last_link'] 		= 'Last';
+		$config['last_tag_open']	= '<li class="page-item">';
+		$config['last_tag_close']	= '</li>';
+
+		$config['next_link'] 		= '&raquo';
+		$config['next_tag_open']	= '<li class="page-item">';
+		$config['next_tagl_close']	= '</li>';
+
+		$config['prev_link'] 		= '&laquo';
+		$config['prev_tag_open']	= '<li class="page-item"	>';
+		$config['prev_tag_close']	= '</li>';
+
+		$config['cur_tag_open']		= '<li class="page-item active"><a class="page-link" herf="#">';
+		$config['cur_tag_close']	= '</a></li>';
+
+		$config['num_tag_open']		= '<li class="page-item">';
+		$config['num_tag_close']	= '</li>';
+		
+		$config['attributes'] = array('class' => 'page-link');
+		
+		// initialize
+		$this->pagination->initialize($config);
+
+		// var_dump($config['total_rows']); die;
+
+		$data['start']		= $this->uri->segment(3);
+		$data['surat'] 		= $this->model_user_surat->get_tampil_data($config['per_page'], $data['start'])->result();
+
+		// $data['surat'] 		= $this->model_bpprd_surat->tampil_data()->result();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
@@ -152,9 +200,10 @@ class Bpprd extends CI_Controller {
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$data['detail'] = $this->model_bpprd_surat->detail_surat($id_surat);
-		$data['komentar'] = $this->db->query("SELECT * FROM user_komentar ul, user_data_surat tl, user us WHERE ul.id_surat = tl.id_surat AND ul.id_komentar = tl.id_komentar")->result();
 
-		// $data['komentar'] = $this->db->query("SELECT * FROM user_komentar ul, user_data_surat tl, user us WHERE ul.id_komentar = tl.id_komentar AND ul.id = us.id AND ul.id_surat = tl.id_surat")->result();
+		$data['komentar'] = $this->db->query("SELECT * FROM user_komentar ul, user us WHERE ul.id = us.id AND ul.id_surat = '$id_surat'")->result();
+
+		// $data['komentar'] = $this->model_bpprd_surat->tampil_komentar()->result();
 
 		// $data['komentar'] = $this->model_user_surat->detail_surat($id_surat);	
 
@@ -165,20 +214,30 @@ class Bpprd extends CI_Controller {
 		$this->load->view('templates/footer',$data);
 	}
 
-	public function balas_komentar()
+	public function balas_komentar($id_surat)
 	{
 		$id						= $this->session->userdata('id');
-		// $id_surat				= $this->input->post('id_surat');
 		$komentar				= $this->input->post('komentar');
 
 		$data = array(
 			'id'				=> $id,
-			// 'id_surat'			=> $id_surat,
+			'id_surat'			=> $id_surat,
 			'komentar'			=> $komentar
 		);
 
+		// var_dump($id_surat); die();
+
 		$this->model_bpprd_surat->tambah_surat($data, 'user_komentar');
+		redirect('bpprd/detail_surat/'.$id_surat);
+	}
+
+	// Hapus Komentar
+	public function hapus($id)
+	{
+		$where  = array('id_komentar' => $id);
+		$this->model_user_surat->hapus_data($where, 'user_komentar');
 		redirect('bpprd/datasurat');
 	}
+	
 
 }

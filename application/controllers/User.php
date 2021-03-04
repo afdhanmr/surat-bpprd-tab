@@ -7,7 +7,7 @@ class User extends CI_Controller {
 		{
 			parent::__construct();
 			is_logged_in();
-			if(!$this->session->userdata('role_id') == 2) {
+			if($this->session->userdata('role_id') != 2) {
 			  redirect('auth');
 			}
 		}
@@ -121,7 +121,59 @@ class User extends CI_Controller {
 		$data['title'] = 'Data Surat';
 		$data['user']  = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-		$data['surat'] 		= $this->model_user_surat->tampil_data()->result();
+		// BARU
+		$this->load->model('model_user_surat','datasurat');
+
+		// Load Library Pagination
+		$this->load->library('pagination');				
+
+		// Config
+		$config['base_url']		= site_url('user/datasurat');
+		$config['total_rows']	= $this->model_user_surat->count_tampil_data();
+		$config['per_page']		= 5;
+		$config['num_links'] 	= 2;
+
+		// Style
+		$config['full_tag_open'] 	= '<nav><ul class="pagination justify-content-center">';
+		$config['full_tag_close'] 	= '</ul></nav>';
+
+		$config['first_link'] 		= 'First';
+		$config['first_tag_open']	= '<li class="page-item">';
+		$config['first_tag_close']	= '</li>';
+
+		$config['last_link'] 		= 'Last';
+		$config['last_tag_open']	= '<li class="page-item">';
+		$config['last_tag_close']	= '</li>';
+
+		$config['next_link'] 		= '&raquo';
+		$config['next_tag_open']	= '<li class="page-item">';
+		$config['next_tagl_close']	= '</li>';
+
+		$config['prev_link'] 		= '&laquo';
+		$config['prev_tag_open']	= '<li class="page-item"	>';
+		$config['prev_tag_close']	= '</li>';
+
+		$config['cur_tag_open']		= '<li class="page-item active"><a class="page-link" herf="#">';
+		$config['cur_tag_close']	= '</a></li>';
+
+		$config['num_tag_open']		= '<li class="page-item">';
+		$config['num_tag_close']	= '</li>';
+		
+		$config['attributes'] = array('class' => 'page-link');
+		
+		// initialize
+		$this->pagination->initialize($config);
+
+		// var_dump($config['total_rows']); die;
+
+		$data['start']		= $this->uri->segment(3);
+		$data['surat'] 		= $this->model_user_surat->get_tampil_data($config['per_page'], $data['start'])->result();
+
+		// $data['komentar'] = $this->db->query("SELECT * FROM user_komentar uk WHERE uk.komentar")->result();
+
+		// $data['pelatihan']  = $this->db->query("SELECT * FROM user ORDER BY id DESC")->result();
+
+		// $data['surat'] 		= $this->model_user_surat->tampil_data()->result();
 		
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
@@ -172,12 +224,13 @@ class User extends CI_Controller {
 			'id'					=> $id,	
 			'id_surat'				=> $id_surat,
 			'no_surat'				=> $no_surat,
-			'tgl_surat'				=> date('d-m-Y'),
-			'tgl_terima_surat'		=> date('d-m-Y'),
+			'tgl_surat'				=> date('d F Y', strtotime($tgl_surat)),
+			'tgl_terima_surat'		=> date('d F Y', strtotime($tgl_terima_surat)),
 			'dari_surat'			=> $dari_surat,
 			'perihal_surat'			=> $perihal_surat,
 			'gambar_surat_1'		=> $gambar_surat_1,
 			'gambar_surat_2'		=> $gambar_surat_2
+			
 		);
 
 		// var_dump($data); die();
@@ -203,7 +256,7 @@ class User extends CI_Controller {
 
 	public function update_surat()
 	{
-		$id				= $this->input->post('id_surat');
+		$id					   	= $this->input->post('id_surat');
 		$no_surat				= $this->input->post('no_surat');
 		$tgl_surat				= $this->input->post('tgl_surat');
 		$tgl_terima_surat		= $this->input->post('tgl_terima_surat');
@@ -214,8 +267,8 @@ class User extends CI_Controller {
 	
 		$data = array(
 			'no_surat'				=> $no_surat,
-			'tgl_surat'				=> date('d-m-Y'),
-			'tgl_terima_surat'		=> date('d-m-Y'),
+			'tgl_surat'				=> date('d F Y', strtotime($tgl_surat)),
+			'tgl_terima_surat'		=> date('d F Y', strtotime($tgl_terima_surat)),
 			'dari_surat'			=> $dari_surat,
 			'perihal_surat'			=> $perihal_surat,
 			'gambar_surat_1'		=> $gambar_surat_1,
@@ -243,6 +296,10 @@ class User extends CI_Controller {
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
 		$data['detail'] = $this->model_user_surat->detail_surat($id_surat);
+
+		$data['komentar'] = $this->db->query("SELECT * FROM user_komentar ul, user us WHERE ul.id = us.id AND ul.id_surat = '$id_surat'")->result();
+
+		// $data['komentar'] = $this->db->get('user_komentar')->result();
 
 		$this->load->view('templates/header',$data);
 		$this->load->view('templates/sidebar',$data);

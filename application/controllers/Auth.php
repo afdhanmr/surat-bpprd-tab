@@ -21,7 +21,7 @@ class Auth extends CI_Controller {
 	public function index()
 	{
 		if ($this->session->userdata('email')) {
-			redirect('user');
+			redirect('bpprd');
 		}
 
 		$this->form_validation->set_rules('email','Email','required|trim|valid_email');
@@ -61,8 +61,8 @@ class Auth extends CI_Controller {
 						redirect('admin');
 					} else if($user['role_id'] == 2){
 						redirect('user');
-					} else {
-					redirect('bpprd');
+					} else if($user['role_id'] == 3){
+						redirect('bpprd');
 					}
 				} else {
 					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Salah</div>');

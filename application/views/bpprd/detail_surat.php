@@ -9,6 +9,28 @@
 	img:hover {
 	  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 	}
+
+	.containerkomentar {
+	  border: 2px solid #dedede;
+	  background-color: #f1f1f1;
+	  border-radius: 5px;
+	  padding: 10px;
+	  margin: 10px 0;
+	}
+
+	/* Darker chat container */
+	.darker {
+	  border-color: #ccc;
+	  background-color: #ddd;
+	}
+
+	/* Clear floats */
+	.container::after {
+	  content: "";
+	  clear: both;
+	  display: table;
+	}
+
 </style>
 
 <div class="container-fluid">
@@ -72,30 +94,34 @@
 	 <?php endforeach ?>
 	 
 
-	 <form action="<?php echo base_url().'bpprd/balas_komentar'?>" method="post" enctype="multipart/form-data" >
+	 <form action="<?php echo base_url().'bpprd/balas_komentar/'.$tl->id_surat?>" method="post" enctype="multipart/form-data" >
 	    <div class="form-group">
-	      <label class="name mb-4">* Komentar sebagai <?= $user['name']; ?></label>
-	      <input type="hidden" name="id" class="form-control" autocomplete="off" required="required">
-	      <!-- <input type="hidden" name="id_surat" class="form-control" autocomplete="off" required="required"> -->
-	      <textarea type="text" name="komentar" class="form-control" autocomplete="off" required="required" style="height: 100px;"></textarea>
-	    </div>
-	  	<button type="submit" class="btn btn-md btn-primary">Kirim</button>
-
+		      <label class="name mb-4">* Komentar sebagai <?= $user['name']; ?></label>
+		      <input type="hidden" name="id" class="form-control" autocomplete="off" value="<?php echo $tl->id ?>">
+		      <input type="hidden" name="id_surat" class="form-control" autocomplete="off" value="<?php echo $tl->id_surat; ?>">
+		      <textarea type="text" name="komentar" class="form-control" autocomplete="off" required="required" style="height: 100px;"></textarea>
+		    </div>
+		  	<button type="submit" class="btn btn-md btn-primary">Kirim</button>
+		 </form>
  <!-- Akhir Container -->
  </div>
 
 	 <div class="komentar mt-4">
-	 	<div class="card bg-info text-white">
-		    <div class="card-body">
-		    	<?php foreach ($komentar as $kom): ?>
+		<?php foreach ($komentar as $kom): ?>
+		 <div class="containerkomentar mt-4">
 
-		 			<?php echo $kom->komentar ?>
+		 	<p><?php echo $kom->komentar ?></p>
+		 	
+		 </div>
+		<?php endforeach ?>
 
-		 		<?php endforeach ?></div>
-		 </div>		 
+		<?php foreach ($komentar as $kom): ?>
+
+		 <a onclick="return confirm('Apakah Anda Ingin Menghapus Komentar ini ??')" href="<?php echo base_url('bpprd/hapus/' .$kom->id_komentar) ?>" class="btn btn-sm btn-danger mt-3"><i class="fa fa-trash"></i></a>
+
+		<?php endforeach; ?>
+
 	 </div>
-
-	 <br><br>
 
 	 <?php echo anchor('bpprd/datasurat/','<div class="btn btn-sm btn-danger mt-3 mb-4">KEMBALI</div>')?>
 
