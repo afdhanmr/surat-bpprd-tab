@@ -8,9 +8,48 @@
           
 
         <button class="btn btn-sm btn-primary mb-3 mt-4" data-target="#tambah_blog" data-toggle="modal"><i class="fas fa-plus fas-sm"></i> Tambah Surat</button>
-        <p>* Urutan surat paling atas adalah surat terbaru</p>
+        <p>* Untuk melihat surat terbaru, klik NO pada tabel dibawah</p>
+
+        <table id="datatables" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+              <th>NO</th>
+              <th>NOMOR SURAT</th>
+              <th>TANGGAL SURAT</th>
+              <th>TANGGAL DITERIMA</th>
+              <th>DARI</th>
+              <th>PERIHAL</th>
+              <th>DETAIL</th>
+              <th>AKSI</th>
+              <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+        <?php
+        $no = 1;
+        foreach ($surat as $srt) : ?>
+
+          <tr>
+            <td><?php echo $no++ ?></td>
+            <td><?php echo $srt->no_surat ?></td>
+            <td><?php echo $srt->tgl_surat ?></td>
+            <td><?php echo $srt->tgl_terima_surat ?></td>
+            <td><?php echo $srt->dari_surat ?></td>
+            <td><?php echo $srt->perihal_surat ?></td>
+            <td><?php echo anchor('user/detail_surat/' .$srt->id_surat, '<div class="btn btn-primary btn-sm">Detail</div>') ?></td>
+            <td>
+              <?php echo anchor('user/editsurat/' .$srt->id_surat, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?>          
+            </td>
+             <td> <a onclick="return confirm('Apakah Anda Ingin Menghapus Surat ini ??')" href="<?php echo base_url('user/hapus/' .$srt->id_surat) ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+             </td>
+          </tr>
+
+          <?php endforeach; ?>
+        </tbody>
+    </table>
         
-        <div class="table-responsive">
+        <!-- <div class="table-responsive">
           <table class="table shadow table-bordered table-striped">
             <tr>
               <th>NO</th>
@@ -19,7 +58,6 @@
               <th>TANGGAL DITERIMA</th>
               <th>DARI</th>
               <th>PERIHAL</th>
-              <!-- <th>KOMENTAR</th> -->
               <th>DETAIL</th>
               <th colspan="2">AKSI</th>
             </tr>
@@ -33,17 +71,7 @@
               <td><?php echo $srt->tgl_surat ?></td>
               <td><?php echo $srt->tgl_terima_surat ?></td>
               <td><?php echo $srt->dari_surat ?></td>
-              <td><?php echo $srt->perihal_surat ?></td>              
-              <!-- <td>
-              <?php foreach ($komentar as $kom): ?>                
-                <?php 
-                    if(empty($kom->komentar)) { ?>
-                      <div class="btn btn-info btn-sm">Ada Komentar</div>
-                <?php } else { ?>
-                      <div class="btn btn-danger btn-sm">Belum Ada Komentar</div>
-                <?php } ?>
-                <?php endforeach; ?>
-               </td> -->
+              <td><?php echo $srt->perihal_surat ?></td>
               <td><?php echo anchor('user/detail_surat/' .$srt->id_surat, '<div class="btn btn-primary btn-sm">Detail</div>') ?></td>
               <td>
                 <?php echo anchor('user/editsurat/' .$srt->id_surat, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?>          
@@ -58,7 +86,10 @@
 
           <?= $this->pagination->create_links(); ?>
           
-        </div>
+        </div> -->
+
+
+    <!-- END CONTAINER FLUID -->
     </div>
 
         <!-- Modal -->
@@ -126,9 +157,21 @@
 
         <script>
           
-          $("#datepicker").datepicker();
+          $("#datepicker").datepicker({
+              minDate : 0,
+              changeMonth : true,
+              changeYear : true,
+          });
 
-          $("#datepicker1").datepicker();
+        </script>
+
+        <script>
+
+          $("#datepicker1").datepicker({
+              minDate : 0,
+              changeMonth : true,
+              changeYear : true
+          });
 
         </script>
 

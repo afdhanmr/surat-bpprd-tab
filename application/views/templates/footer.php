@@ -48,6 +48,15 @@
   <!-- Custom scripts for all pages-->
   <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
 
+  <!-- Datatables -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Login page -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
   <!-- JQUERY -->
   <script>
   
@@ -78,11 +87,20 @@
 
   </script>
 
+<!-- Load edit foto -->
+
   <script>
      var loadFile = function(event) {
          var output = document.getElementById('output');
          output.src = URL.createObjectURL(event.target.files[0]);
      };
+  </script>
+
+  <!-- DataTables -->
+  <script>
+    $(document).ready(function() {
+        $('#datatables').DataTable();
+    } );
   </script>
 
 </body>
