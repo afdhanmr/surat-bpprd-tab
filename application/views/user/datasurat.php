@@ -199,29 +199,7 @@
           </div>
         </div>
 
-        <!-- Datepicker -->
-        <script src="<?= base_url('assets/'); ?>datepicker/jquery-3.5.1.min.js"></script>
-        <script src="<?= base_url('assets/'); ?>datepicker/jquery-ui.min.js"></script>
-
-        <script>
-          
-          $("#datepicker").datepicker({
-              minDate : 0,
-              changeMonth : true,
-              changeYear : true,
-          });
-
-        </script>
-
-        <script>
-
-          $("#datepicker1").datepicker({
-              minDate : 0,
-              changeMonth : true,
-              changeYear : true
-          });
-
-        </script>
+        
 
 	</div>
 </div>

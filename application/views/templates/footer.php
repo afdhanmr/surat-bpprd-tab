@@ -70,6 +70,28 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"></link> -->
 
+  <!-- Datepicker -->
+  <script src="<?= base_url('assets/'); ?>datepicker/jquery-3.5.1.min.js"></script>
+  <script src="<?= base_url('assets/'); ?>datepicker/jquery-ui.min.js"></script>
+
+  <script>
+    
+    $("#datepicker").datepicker({
+        changeMonth : true,
+        changeYear : true,
+    });
+
+  </script>
+
+  <script>
+
+    $("#datepicker1").datepicker({
+        changeMonth : true,
+        changeYear : true
+    });
+
+  </script>
+
   <!-- JQUERY -->
   <script>
   

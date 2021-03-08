@@ -55,7 +55,7 @@
 
 			<?php endforeach; ?>
 
-			<script src="<?= base_url('assets/'); ?>datepicker/jquery-3.5.1.min.js"></script>
+			<!-- <script src="<?= base_url('assets/'); ?>datepicker/jquery-3.5.1.min.js"></script>
 	        <script src="<?= base_url('assets/'); ?>datepicker/jquery-ui.min.js"></script>
 
 	        <script>
@@ -64,7 +64,7 @@
 
 	          $("#datepicker1").datepicker();
 
-	        </script>
+	        </script> -->
             
         </div>
         <!-- /.container-fluid -->
