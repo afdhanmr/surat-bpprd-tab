@@ -18,46 +18,47 @@
 
         <div class="table-responsive">
             <table id="datatables" class="table table-striped table-bordered" style="width:100%">
-            <thead class="thead-dark">
+              <thead class="thead-dark">
+                  <tr>
+                    <th>NO</th>
+                    <th>NOMOR SURAT</th>
+                    <th>TANGGAL SURAT</th>
+                    <th>TANGGAL DITERIMA</th>
+                    <th>DARI</th>
+                    <th>PERIHAL</th>
+                    <th>DETAIL</th>
+                    <th>AKSI</th>
+                    <th></th>
+                  </tr>
+              </thead>
+              
+              <tbody>
+
+              <?php
+              $no = 1;
+              foreach ($surat as $srt) : ?>
+
                 <tr>
-                  <th>NO</th>
-                  <th>NOMOR SURAT</th>
-                  <th>TANGGAL SURAT</th>
-                  <th>TANGGAL DITERIMA</th>
-                  <th>DARI</th>
-                  <th>PERIHAL</th>
-                  <th>DETAIL</th>
-                  <th>AKSI</th>
-                  <th></th>
+                  <td><?php echo $no++ ?></td>
+                  <td><?php echo $srt->no_surat ?></td>
+                  <td><?php echo $srt->tgl_surat ?></td>
+                  <td><?php echo $srt->tgl_terima_surat ?></td>
+                  <td><?php echo $srt->dari_surat ?></td>
+                  <td><?php echo $srt->perihal_surat ?></td>
+                  <td><?php echo anchor('user/detail_surat/' .$srt->id_surat, '<div class="btn btn-primary btn-sm">Detail</div>') ?></td>
+                  <td>
+                    <?php echo anchor('user/editsurat/' .$srt->id_surat, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?>          
+                  </td>
+                   <td> <a onclick="return confirm('Apakah Anda Ingin Menghapus Surat ini ??')" href="<?php echo base_url('user/hapus/' .$srt->id_surat) ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                   </td>
                 </tr>
-            </thead>
-            <tbody>
 
-            <?php
-            $no = 1;
-            foreach ($surat as $srt) : ?>
-
-              <tr>
-                <td><?php echo $no++ ?></td>
-                <td><?php echo $srt->no_surat ?></td>
-                <td><?php echo $srt->tgl_surat ?></td>
-                <td><?php echo $srt->tgl_terima_surat ?></td>
-                <td><?php echo $srt->dari_surat ?></td>
-                <td><?php echo $srt->perihal_surat ?></td>
-                <td><?php echo anchor('user/detail_surat/' .$srt->id_surat, '<div class="btn btn-primary btn-sm">Detail</div>') ?></td>
-                <td>
-                  <?php echo anchor('user/editsurat/' .$srt->id_surat, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?>          
-                </td>
-                 <td> <a onclick="return confirm('Apakah Anda Ingin Menghapus Surat ini ??')" href="<?php echo base_url('user/hapus/' .$srt->id_surat) ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
-                 </td>
-              </tr>
-
-              <?php endforeach; ?>
-            </tbody>
+                <?php endforeach; ?>
+              </tbody>
             </table>
         </div>
 
-        <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <!-- <table id="example" class="table table-striped table-bordered" style="width:100%">
           <thead>
               <tr>
                   <th>Name</th>
@@ -78,7 +79,7 @@
                   <td>$320,800</td>
               </tr>
           </tbody>
-        </table>
+        </table> -->
         
         <!-- <div class="table-responsive">
           <table class="table shadow table-bordered table-striped">

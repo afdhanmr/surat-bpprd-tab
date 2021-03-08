@@ -8,7 +8,7 @@
 
         <!-- <div class="table-responsive"> -->
         <table id="datatables" class="table table-striped table-bordered" style="width:100%">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th>NO</th>
                     <th>NOMOR SURAT</th>
@@ -29,6 +29,7 @@
               <?php endforeach; ?>
             </tbody>
         </table>
+        
         <!-- </div> -->
 
           <!-- <table class="table shadow table-bordered table-striped">

@@ -49,10 +49,9 @@
   <script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
 
   <!-- Datatables -->
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
-
+  <script src="https://code.jquery.com/jquery-3.5.1.js" defer></script>
+  <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" defer></script>
+  <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js" defer></script>
 
   <!-- <script src="<?= base_url('assets/'); ?>dataTables/jquery.dataTables.min.js"></script>
   <script src="<?= base_url('assets/'); ?>dataTables/dataTables.bootstrap4.min.js"></script> -->
