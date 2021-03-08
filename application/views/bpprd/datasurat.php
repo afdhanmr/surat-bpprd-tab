@@ -4,7 +4,8 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-        <p>* Untuk melihat surat terbaru, klik <b>NO</b> pada tabel dibawah</p>
+        <!-- <p>* Untuk melihat surat terbaru, klik <b>NO</b> pada tabel dibawah</p> -->
+        <p>* Urutan paling atas adalah urutan terbaru</p>
 
         <!-- <div class="table-responsive"> -->
         <table id="datatables" class="table table-striped table-bordered" style="width:100%">

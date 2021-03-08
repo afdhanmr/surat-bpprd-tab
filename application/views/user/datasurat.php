@@ -13,8 +13,9 @@
           <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
           
 
-        <button class="btn btn-sm btn-primary mb-3 mt-4" data-target="#tambah_blog" data-toggle="modal"><i class="fas fa-plus fas-sm"></i> Tambah Surat</button>
-        <p>* Untuk melihat surat terbaru, klik NO pada tabel dibawah</p>
+        <button class="btn btn-sm btn-primary mb-3" data-target="#tambah_blog" data-toggle="modal"><i class="fas fa-plus fas-sm"></i> Tambah Surat</button>
+        <!-- <p>* Untuk melihat surat terbaru, klik NO pada tabel dibawah</p> -->
+        <p>* Urutan paling atas adalah urutan terbaru</p>
 
         <div class="table-responsive">
             <table id="datatables" class="table table-striped table-bordered" style="width:100%">
@@ -26,12 +27,13 @@
                     <th>TANGGAL DITERIMA</th>
                     <th>DARI</th>
                     <th>PERIHAL</th>
+                    <!-- <th></th> -->
                     <th>DETAIL</th>
                     <th>AKSI</th>
                     <th></th>
                   </tr>
               </thead>
-              
+
               <tbody>
 
               <?php
@@ -45,6 +47,19 @@
                   <td><?php echo $srt->tgl_terima_surat ?></td>
                   <td><?php echo $srt->dari_surat ?></td>
                   <td><?php echo $srt->perihal_surat ?></td>
+                  <!-- <td>
+                    <?php foreach ($komentar as $kom) { ?>
+
+                      <?php 
+                          if(!$kom->komentar) { ?>
+                            <div class="btn btn-info btn-sm"></div>
+                          <?php } else { ?>
+                                <div class="btn btn-danger btn-sm"><?php echo 'Ada Komentar'?></div>
+                          <?php } 
+                      ?>
+
+                    <?php } ?>
+                  </td> -->
                   <td><?php echo anchor('user/detail_surat/' .$srt->id_surat, '<div class="btn btn-primary btn-sm">Detail</div>') ?></td>
                   <td>
                     <?php echo anchor('user/editsurat/' .$srt->id_surat, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?>          

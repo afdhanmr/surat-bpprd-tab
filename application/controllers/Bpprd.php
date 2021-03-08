@@ -164,12 +164,10 @@ class Bpprd extends CI_Controller {
 		// initialize
 		$this->pagination->initialize($config);
 
-		// var_dump($config['total_rows']); die;
+		// $data['start']		= $this->uri->segment(3);
+		// $data['surat'] 		= $this->model_user_surat->get_tampil_data($config['per_page'], $data['start'])->result();
 
-		$data['start']		= $this->uri->segment(3);
-		$data['surat'] 		= $this->model_user_surat->get_tampil_data($config['per_page'], $data['start'])->result();
-
-		// $data['surat'] 		= $this->model_bpprd_surat->tampil_data()->result();
+		$data['surat'] 		= $this->model_bpprd_surat->tampil_data()->result();
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);

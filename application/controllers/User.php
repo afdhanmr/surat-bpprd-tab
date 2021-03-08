@@ -14,13 +14,25 @@ class User extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = 'My Profile';
+		$data['title'] = 'Dashboard';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 		
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('templates/topbar', $data);
 		$this->load->view('user/index', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function myprofile()
+	{
+		$data['title'] = 'My Profile';
+		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+		
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('user/my-profile', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -164,16 +176,14 @@ class User extends CI_Controller {
 		// initialize
 		$this->pagination->initialize($config);
 
-		// var_dump($config['total_rows']); die;
+		// $data['start']		= $this->uri->segment(3);
+		// $data['surat'] 		= $this->model_user_surat->get_tampil_data($config['per_page'], $data['start'])->result();
 
-		$data['start']		= $this->uri->segment(3);
-		$data['surat'] 		= $this->model_user_surat->get_tampil_data($config['per_page'], $data['start'])->result();
+		$data['komentar'] 	= $this->db->query("SELECT * FROM user_komentar uk, user us WHERE uk.id = us.id")->result();
 
-		// $data['komentar'] = $this->db->query("SELECT * FROM user_komentar uk WHERE uk.komentar")->result();
+		// $data['komentar'] = $this->db->query("SELECT * FROM user_komentar uk, user us WHERE uk.id = us.id AND uk.id_komentar = '$id_komentar'")->result();
 
-		// $data['pelatihan']  = $this->db->query("SELECT * FROM user ORDER BY id DESC")->result();
-
-		// $data['surat'] 		= $this->model_user_surat->tampil_data()->result();
+		$data['surat'] 		= $this->model_user_surat->tampil_data()->result();
 		
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);

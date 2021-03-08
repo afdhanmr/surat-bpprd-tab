@@ -2,7 +2,8 @@
 
 class Model_bpprd_surat extends CI_Model{
 	public function tampil_data(){
-		$query = $this->db->get('user_data_surat'); 
+		// $query = $this->db->get('user_data_surat');
+		$query = $this->db->query("SELECT * FROM user_data_surat ORDER BY id_surat DESC"); 
 		return $query;
 	}
 
