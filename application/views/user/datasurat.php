@@ -1,5 +1,11 @@
     <link href="<?= base_url('assets/'); ?>datepicker/jquery-ui.min.css" rel="stylesheet">
 
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" 
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.js"></script> -->
+
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
@@ -12,7 +18,7 @@
 
         <div class="table-responsive">
             <table id="datatables" class="table table-striped table-bordered" style="width:100%">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                   <th>NO</th>
                   <th>NOMOR SURAT</th>
@@ -50,6 +56,29 @@
             </tbody>
             </table>
         </div>
+
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Position</th>
+                  <th>Office</th>
+                  <th>Age</th>
+                  <th>Start date</th>
+                  <th>Salary</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Tiger Nixon</td>
+                  <td>System Architect</td>
+                  <td>Edinburgh</td>
+                  <td>61</td>
+                  <td>2011/04/25</td>
+                  <td>$320,800</td>
+              </tr>
+          </tbody>
+        </table>
         
         <!-- <div class="table-responsive">
           <table class="table shadow table-bordered table-striped">
@@ -154,6 +183,7 @@
           </div>
         </div>
 
+        <!-- Datepicker -->
         <script src="<?= base_url('assets/'); ?>datepicker/jquery-3.5.1.min.js"></script>
         <script src="<?= base_url('assets/'); ?>datepicker/jquery-ui.min.js"></script>
 
