@@ -5,7 +5,7 @@
           <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
           <div class="row">
-          	<div class="col-lg-6">
+          	<!-- <div class="col-lg-6"> -->
 
           		<?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
@@ -13,7 +13,33 @@
 
           		<a href="" class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#exampleModal">Tambah Menu Baru</a>
 
-          		<table class="table table-hover">
+          		<div class="table-responsive">
+	          		<table class="table table-hover" id="datatables">
+	          			<thead class="thead-dark">
+	          				<th>No</th>
+	          				<th>Menu</th>
+	          				<th>Action</th>
+	          			</thead>
+	          			<tbody>
+	          				<?php
+	          				$no = 1;
+	          				foreach ($menu as $m) : ?>
+	          				
+	          				<tr>
+	          					<td><?php echo $no++ ?></td>
+	          					<td><?= $m['menu'] ?></td>
+	          					<td>
+	          						<a href="" class="btn btn-success btn-sm">Edit</a>
+					      			<a href=""class="btn btn-danger btn-sm">Delete</a>
+					      		</td>
+	          				</tr>
+
+	          				<?php endforeach; ?>
+	          			</tbody>
+	          		</table>
+          		</div>
+
+          		<!-- <table class="table table-hover">
 				  <thead>
 				    <tr>
 				      <th scope="col">No</th>
@@ -35,8 +61,9 @@
 				    <?php $i++; ?>
 					<?php endforeach; ?>
 				  </tbody>
-				</table>
-          	</div>
+				</table> -->
+				
+          	<!-- </div> -->
           </div>
             
         </div>

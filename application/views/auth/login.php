@@ -249,6 +249,9 @@
                             <?= form_error('password', '<div class="text-danger small ml-2 mb-2">', '</div>') ?>
                         </div>
                         <div class="row mb-3 px-3 mt-4"> <button type="submit" class="btn btn-blue btn-block text-center">Login</button> </div>
+                        <!-- <div class="text-center">
+                        <a class="small" href="<?= base_url('auth/registration'); ?>">Create an Account!</a>
+                      </div> -->
                     </form>
                 </div>
             </div>

@@ -16,7 +16,41 @@
 
           		<a href="" class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#newsubmenuModal">Tambah Sub Menu Baru</a>
 
-          		<table class="table table-hover">
+          		<div class="table-responsive">
+          			<table class="table table-hover" id="datatables">
+          				<thead class="thead-dark">
+          					<th>No</th>
+          					<th>Title</th>
+          					<th>Menu</th>
+          					<th>Url</th>
+          					<th>Icon</th>
+          					<th>Active</th>
+          					<th>Action</th>
+          				</thead>
+          				<tbody>
+          					
+          					<?php
+          					$no = 1;
+          					foreach ($subMenu as $sm) : ?>
+          					<tr>
+          					  <td><?php echo $no++ ?></td>
+          				      <td><?= $sm['title']; ?></td>
+						      <td><?= $sm['menu']; ?></td>
+						      <td><?= $sm['url']; ?></td>
+						      <td><?= $sm['icon']; ?></td>
+						      <td><?= $sm['is_active']; ?></td>
+						      <td>
+						    	<a href="" class="btn btn-success btn-sm">Edit</a>
+						      	<a href=""class="btn btn-danger btn-sm">Delete</a>
+						      </td>
+          					</tr>
+          					<?php endforeach; ?>	
+
+          				</tbody>
+          			</table>
+          		</div>
+
+          		<!-- <table class="table table-hover">
 				  <thead>
 				    <tr>
 				      <th scope="col">No</th>
@@ -46,7 +80,8 @@
 				    <?php $i++; ?>
 					<?php endforeach; ?>
 				  </tbody>
-				</table>
+				</table> -->
+
           	</div>
           </div>
             

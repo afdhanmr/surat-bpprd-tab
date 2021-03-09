@@ -134,13 +134,9 @@
   <!-- DataTables -->
   <script>
     $(document).ready(function() {
-        $('#datatables').DataTable();
-    } );
-  </script>
-
-  <script type="text/javascript">
-    $(document).ready( function () {
-        $('#example').DataTable();
+        $('#datatables').DataTable({
+           "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
     } );
   </script>
 
