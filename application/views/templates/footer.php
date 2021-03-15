@@ -2,7 +2,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright 2021 &copy; SURAT BPPRD</span>
+            <span>Copyright 2021 &copy; BPPRD</span>
           </div>
         </div>
       </footer>

@@ -15,6 +15,11 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
+            <!-- <button type="button" class="btn btn-sm btn-dual" id="page-header-notifications-dropdown" data-toggle="dropdown1" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-fw fa-bell"></i>
+                <span class="text-primary">•</span>
+            </button> -->
+
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->

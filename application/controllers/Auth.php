@@ -24,6 +24,12 @@ class Auth extends CI_Controller {
 			redirect('bpprd');
 		}
 
+		// if ($this->session->userdata('email')) {
+		// 	redirect('bpprd');
+		// } else {
+		// 	redirect('user');
+		// }
+
 		$this->form_validation->set_rules('email','Email','required|trim|valid_email');
 		$this->form_validation->set_rules('password','Password','required|trim');
 
