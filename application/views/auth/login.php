@@ -237,6 +237,7 @@
                         <div class="line"></div>
                     </div>
                     <h4 class="mb-4">Silahkan <b>Login</b></h4>
+                    <?= $this->session->flashdata('message') ?>
                     <form class="user" method="post" action="<?= base_url('auth'); ?>">
                         <div class="row px-3"> <label class="mb-1">
                             <h6 class="mb-0 text-sm mt-2">Email Address</h6>
