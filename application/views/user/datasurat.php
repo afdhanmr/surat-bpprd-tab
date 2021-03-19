@@ -29,7 +29,7 @@
                     <th>PERIHAL</th>
                     <!-- <th></th> -->
                     <th>DETAIL</th>
-                    <th>AKSI</th>
+                    <th></th>
                     <th></th>
                   </tr>
               </thead>
