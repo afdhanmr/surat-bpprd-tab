@@ -9,7 +9,7 @@
 
           			<?= $this->session->flashdata('message') ?>
           			
-          			<form action="<?= base_url('user/changepassword'); ?>" method="post">
+          			<form action="<?= base_url('bpprd/changepassword'); ?>" method="post">
           				<div class="form-group">
 					    	<label for="current_password">Current Password</label>
 					    	<input type="password" class="form-control" id="current_password" name="current_password" placeholder="">

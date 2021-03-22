@@ -21,14 +21,14 @@
             <table id="datatables" class="table table-striped table-bordered" style="width:100%">
               <thead class="thead-dark">
                   <tr>
-                    <th>NO</th>
-                    <th>NOMOR SURAT</th>
-                    <th>TANGGAL SURAT</th>
-                    <th>TANGGAL DITERIMA</th>
-                    <th>DARI</th>
-                    <th>PERIHAL</th>
+                    <th>No</th>
+                    <th>Nomor Surat</th>
+                    <th>Tanggal Surat</th>
+                    <th>Tanggal Diterima</th>
+                    <th>Dari</th>
+                    <th>Perihal</th>
                     <!-- <th></th> -->
-                    <th>DETAIL</th>
+                    <th>Detail</th>
                     <th></th>
                     <th></th>
                   </tr>

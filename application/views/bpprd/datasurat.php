@@ -11,9 +11,9 @@
         <table id="datatables" class="table table-striped table-bordered" style="width:100%">
             <thead class="thead-dark">
                 <tr>
-                    <th>NO</th>
-                    <th>NOMOR SURAT</th>
-                    <th>DETAIL</th>
+                    <th>No</th>
+                    <th>Nomor Surat</th>
+                    <th>Detail</th>
                 </tr>
             </thead>
             <tbody>
