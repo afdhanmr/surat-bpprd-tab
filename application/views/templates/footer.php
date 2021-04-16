@@ -2,7 +2,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright 2021 &copy; BPPRD</span>
+            <span>Copyright 2021 &copy; BPPRD Tabalong</span>
           </div>
         </div>
       </footer>
@@ -135,6 +135,24 @@
   <script>
     $(document).ready(function() {
         $('#datatables').DataTable({
+           "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    } );
+  </script>
+
+  <!-- DataTables admin menu -->
+  <script>
+    $(document).ready(function() {
+        $('#datatablesadminmenu').DataTable({
+           "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+        });
+    } );
+  </script>
+
+  <!-- DataTables admin sub menu -->
+  <script>
+    $(document).ready(function() {
+        $('#datatablesadminsubmenu').DataTable({
            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
         });
     } );

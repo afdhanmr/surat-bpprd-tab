@@ -112,27 +112,29 @@ class Auth extends CI_Controller {
 				'image'			=> 'default.jpg',
 				'password'		=> password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
 				'role_id'		=> 2,
-				'is_active'		=> 0,
+				'is_active'		=> 1,
 				'date_create'	=> time()
 			];
 
 			// TOKEN
-			$token 		=	base64_encode(random_bytes(32));
+			// $token 		=	base64_encode(random_bytes(32));
+
 			// $token = base64_encode(openssl_random_pseudo_bytes(32));
 			// $token = bin2hex(openssl_random_pseudo_bytes(32));
 			// var_dump($token); die;
-			$user_token	=	[
-				'email'				=>	$email,
-				'token'				=>	$token,
-				'date_create'		=>	time()
-			];
+
+			// $user_token	=	[
+			// 	'email'				=>	$email,
+			// 	'token'				=>	$token,
+			// 	'date_create'		=>	time()
+			// ];
 
 			 //Tambahan
 			// $this->goToDefaultPage();
 			$this->db->insert('user',$data);
-			$this->db->insert('user_token',$user_token);
+			// $this->db->insert('user_token',$user_token);
 
-			$this->_sendEmail($token, 'verify');
+			// $this->_sendEmail($token, 'verify');
 
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Selamat! Akun Kamu Sudah Dibuat, Silahkan Aktivasi Email</div>');
 			redirect('auth');

@@ -75,7 +75,7 @@ class User extends CI_Controller {
 				} else {
 					// echo $this->upload->display_errors();
 					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">' . $this->upload->display_errors() . '</div>');
-					redirect('user');
+					redirect('user/myprofile');
 				}
 			}
 
@@ -85,7 +85,7 @@ class User extends CI_Controller {
 			$this->db->update('user');
 
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profile Kamu Sudah Berubah</div>');
-			redirect('user');
+			redirect('user/myprofile');
 		}
 	}
 

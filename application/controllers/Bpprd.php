@@ -226,6 +226,7 @@ class Bpprd extends CI_Controller {
 		// var_dump($id_surat); die();
 
 		$this->model_bpprd_surat->tambah_surat($data, 'user_komentar');
+		$this->session->set_flashdata('balas', '<div class="alert alert-success" role="alert">Sudah menambahkan komentar</div>');
 		redirect('bpprd/detail_surat/'.$id_surat);
 	}
 

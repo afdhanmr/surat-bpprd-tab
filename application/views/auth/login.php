@@ -227,7 +227,7 @@
             <div class="col-lg-6">
                 <div class="card1 pb-5">
                     <div class="row ml-3"> <img src="<?php echo base_url('assets/img/loginbpprd3.png') ?>" class="logo"> </div>
-                    <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="<?php echo base_url('assets/img/portal.png') ?>" class="image"> </div>
+                    <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="<?php echo base_url('assets/img/sistab.png') ?>" class="image"> </div>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -251,14 +251,14 @@
                         </div>
                         <div class="row mb-3 px-3 mt-4"> <button type="submit" class="btn btn-blue btn-block text-center">Login</button> </div>
                         <!-- <div class="text-center">
-                        <a class="small" href="<?= base_url('auth/registration'); ?>">Create an Account!</a>
-                      </div> -->
+                            <a class="small" href="<?= base_url('auth/registration'); ?>">Create an Account!</a>
+                        </div> -->
                     </form>
                 </div>
             </div>
         </div>
         <div class="bg-blue py-4">
-            <div class="row px-3"> <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2021. All rights reserved. <p>Supported By: Cupres</p></small>
+            <div class="row px-3"> <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2021. All rights reserved. <p>Supported By: BPPRD Tabalong</p></small>
             </div>
         </div>
     </div>

@@ -181,13 +181,15 @@
                 </div>
 
                 <div class="form-group">
-                  <label>Lembar Disposisi</label><br>
+                  <label>Lembar Disposisi</label><br>                  
                   <input type="file" name="gambar_surat_1" class="form-control" required="required">
+                  *Maksimal 500 kb
                 </div>
 
                 <div class="form-group">
                   <label>Surat</label><br>
                   <input type="file" name="gambar_surat_2" class="form-control" required="required">
+                  *Maksimal 500 kb
                 </div>                
             </div>
 

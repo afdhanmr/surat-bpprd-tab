@@ -2,11 +2,8 @@
 
 class Model_user_surat extends CI_Model{
 	public function tampil_data(){
-		// $query = $this->db->get('user_data_surat');
 		$user = $this->session->userdata('id');
-		$query = 
-		// $this->db->query("SELECT * FROM user_data_surat ORDER BY id_surat DESC"); 
-		$this->db->query("SELECT * FROM user_data_surat tl, user us WHERE tl.id_surat AND tl.id = us.id AND us.id = '$user' ORDER BY id_surat DESC");
+		$query = $this->db->query("SELECT * FROM user_data_surat tl, user us WHERE tl.id_surat AND tl.id = us.id AND us.id = '$user' ORDER BY id_surat DESC");
 		return $query;
 	}
 
