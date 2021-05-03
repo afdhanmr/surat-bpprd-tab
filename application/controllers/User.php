@@ -16,6 +16,10 @@ class User extends CI_Controller {
 	{
 		$data['title'] = 'Dashboard';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$user = $this->session->userdata('id');
+
+		$data['alert'] = $this->db->query("SELECT * FROM user_data_surat as uds, user_komentar as uk WHERE uds.id_surat = uk.id_surat ORDER BY uds.id_surat DESC LIMIT 1")->result();
 		
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
@@ -181,7 +185,11 @@ class User extends CI_Controller {
 
 		$data['komentar'] 	= $this->db->query("SELECT * FROM user_komentar uk, user us WHERE uk.id = us.id")->result();
 
-		// $data['komentar'] = $this->db->query("SELECT * FROM user_komentar uk, user us WHERE uk.id = us.id AND uk.id_komentar = '$id_komentar'")->result();
+		// $data['notif'] = $this->db->query("SELECT * FROM user_data_surat as uds, user_komentar as uk WHERE uds.id_surat = uk.id_surat LIMIT 1")->result();
+
+		$user = $this->session->userdata('id');
+
+		$data['alert'] = $this->db->query("SELECT * FROM user_data_surat as uds, user_komentar as uk WHERE uds.id_surat = uk.id_surat ORDER BY uds.id_surat DESC LIMIT 1")->result();
 
 		$data['surat'] 		= $this->model_user_surat->tampil_data()->result();
 		

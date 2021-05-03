@@ -16,6 +16,10 @@ class Bpprd extends CI_Controller {
 	{
 		$data['title'] = 'My Profile';
 		$data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+		$user = $this->session->userdata('id');
+
+		$data['alert'] = $this->db->query("SELECT * FROM user_data_surat as uds, user_komentar as uk WHERE uk.id = '$user' ORDER BY uds.id_surat DESC LIMIT 1")->result();
 		
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
@@ -169,6 +173,10 @@ class Bpprd extends CI_Controller {
 
 		$data['surat'] 		= $this->model_bpprd_surat->tampil_data()->result();
 
+		$user = $this->session->userdata('id');
+
+		$data['alert'] = $this->db->query("SELECT * FROM user_data_surat as uds, user_komentar as uk WHERE uk.id = '$user' ORDER BY uds.id_surat DESC LIMIT 1")->result();
+
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('templates/topbar', $data);
@@ -182,9 +190,10 @@ class Bpprd extends CI_Controller {
 		$id_balas					= $this->input->post('id_balas');
 		$balas_surat				= $this->input->post('balas_surat');
 
+		$id_surat					= $this->input->post('id_surat');
+
 		$data = array(
 			'id_balas'				=> $id_balas,
-			// 'id'					=> $id,
 			'balas_surat'			=> $balas_surat
 		);
 
@@ -220,12 +229,12 @@ class Bpprd extends CI_Controller {
 		$data = array(
 			'id'				=> $id,
 			'id_surat'			=> $id_surat,
-			'komentar'			=> $komentar
+			'komentar'			=> $komentar,
+			// 'info'				=> '1'
 		);
 
-		// var_dump($id_surat); die();
-
 		$this->model_bpprd_surat->tambah_surat($data, 'user_komentar');
+
 		$this->session->set_flashdata('balas', '<div class="alert alert-success" role="alert">Sudah menambahkan komentar</div>');
 		redirect('bpprd/detail_surat/'.$id_surat);
 	}

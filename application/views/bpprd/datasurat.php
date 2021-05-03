@@ -4,6 +4,17 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
+        <?php foreach ($alert as $al): ?>
+
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Hello <strong><?= $user['name'] ?></strong>, Surat <ins><?php echo $al->no_surat ?></ins> baru keluar.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <?php endforeach; ?>
+
         <!-- <p>* Untuk melihat surat terbaru, klik <b>NO</b> pada tabel dibawah</p> -->
         <p>* Urutan paling atas adalah urutan terbaru</p>
 

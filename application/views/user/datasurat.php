@@ -9,9 +9,19 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-          
+        <!-- Page Heading -->
+        <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+
+        <?php foreach ($alert as $al): ?>
+
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              Hello <strong><?= $user['name'] ?></strong>, untuk surat <ins><?php echo $al->no_surat ?></ins> sudah ada <ins>komentar</ins>.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+
+        <?php endforeach; ?>          
 
         <button class="btn btn-sm btn-primary mb-3" data-target="#tambah_blog" data-toggle="modal"><i class="fas fa-plus fas-sm"></i> Tambah Surat</button>
         <!-- <p>* Untuk melihat surat terbaru, klik NO pada tabel dibawah</p> -->
@@ -48,17 +58,13 @@
                   <td><?php echo $srt->dari_surat ?></td>
                   <td><?php echo $srt->perihal_surat ?></td>
                   <!-- <td>
-                    <?php foreach ($komentar as $kom) { ?>
-
-                      <?php 
-                          if(!$kom->komentar) { ?>
-                            <div class="btn btn-info btn-sm"></div>
-                          <?php } else { ?>
-                                <div class="btn btn-danger btn-sm"><?php echo 'Ada Komentar'?></div>
-                          <?php } 
-                      ?>
-
-                    <?php } ?>
+                    <?php foreach ($notif as $al): ?>
+                        <?php if ($al->komentar == "") { ?>
+                            <?php echo "Belum ada" ?>
+                        <?php }else { ?>
+                            <?php echo "Ada" ?>
+                        <?php } ?>
+                    <?php endforeach; ?>
                   </td> -->
                   <td><?php echo anchor('user/detail_surat/' .$srt->id_surat, '<div class="btn btn-primary btn-sm">Detail</div>') ?></td>
                   <td>

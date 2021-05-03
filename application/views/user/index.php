@@ -7,6 +7,17 @@
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
+          <?php foreach ($alert as $al): ?>
+
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Hello <strong><?= $user['name'] ?></strong>, untuk surat <ins><?php echo $al->no_surat ?></ins> sudah ada <ins>komentar</ins>.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+          <?php endforeach; ?>
+
           <div class="container-fluid">
               <!-- Content Row -->
               <div class="row">
