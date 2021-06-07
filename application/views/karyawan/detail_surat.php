@@ -103,7 +103,7 @@
 		 			<br>
 
 		 		<?php endforeach ?>
-                
+
                     TTD
                     <p><span>Kepala Badan BPPRD</span></p>
                 
@@ -114,7 +114,7 @@
 
 	 </div>
 	 	
- 	<?php echo anchor('user/datasurat/','<div class="btn btn-sm btn-danger mt-3">KEMBALI</div>')?>
+ 	<?php echo anchor('karyawan/','<div class="btn btn-sm btn-danger mt-3">KEMBALI</div>')?>
 
 	 <?php endforeach ?>
 

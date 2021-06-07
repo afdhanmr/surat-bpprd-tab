@@ -69,6 +69,8 @@ class Auth extends CI_Controller {
 						redirect('user');
 					} else if($user['role_id'] == 3){
 						redirect('bpprd');
+					} else if($user['role_id'] == 4){
+						redirect('karyawan');
 					}
 				} else {
 					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password Salah</div>');
