@@ -180,12 +180,7 @@ class User extends CI_Controller {
 		// initialize
 		$this->pagination->initialize($config);
 
-		// $data['start']		= $this->uri->segment(3);
-		// $data['surat'] 		= $this->model_user_surat->get_tampil_data($config['per_page'], $data['start'])->result();
-
 		$data['komentar'] 	= $this->db->query("SELECT * FROM user_komentar uk, user us WHERE uk.id = us.id")->result();
-
-		// $data['notif'] = $this->db->query("SELECT * FROM user_data_surat as uds, user_komentar as uk WHERE uds.id_surat = uk.id_surat LIMIT 1")->result();
 
 		$user = $this->session->userdata('id');
 
